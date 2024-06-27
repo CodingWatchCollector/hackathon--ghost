@@ -1,10 +1,12 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { SettingsButton } from "../components/settings-button";
 import { AvatarButton } from "../components/avatar-button";
+import { Timer } from "../components/timer";
 
 type SetType = {
   name: string;
   slug: string;
+  active: boolean;
   background: string;
 };
 
@@ -18,31 +20,24 @@ export const loader = () => {
       {
         name: "Animals",
         slug: "animals",
-        background: "https://picsum.photos/400/200?random=1",
-      },
-      {
-        name: "Body",
-        slug: "body",
-        background: "https://picsum.photos/400/200?random=2",
+        active: true,
+        background: "/sets/animals.jpg",
       },
       {
         name: "Colors",
         slug: "colors",
-        background: "https://picsum.photos/400/200?random=3",
-      },
-      {
-        name: "Family",
-        slug: "family",
-        background: "https://picsum.photos/400/200?random=4",
+        active: false,
+        background: "/sets/colors.jpg",
       },
       {
         name: "Fruits",
         slug: "fruits",
-        background: "https://picsum.photos/400/200?random=5",
+        active: false,
+        background: "/sets/fruits.jpg",
       },
     ] satisfies Loader["sets"],
     profile: {
-      image: "https://picsum.photos/id/40/100/100",
+      image: "/profile.jpg",
     },
   };
 };
@@ -50,21 +45,29 @@ export const loader = () => {
 export const Index = () => {
   const { sets } = useLoaderData() as Loader;
   return (
-    <section className="index-page">
+    <section className="index-page stack">
       <header>
         <SettingsButton />
+        <Timer />
         <AvatarButton />
       </header>
-      <ul role="list">
-        {sets.map(({ slug, name, background }) => (
-          <li key={slug}>
-            <Link to={`sets/${slug}`}>
-              <div>{name}</div>
-              <img src={background} alt="" />
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <section className="stack-small">
+        <Link to="analytics" className="button-style analytics">
+          Analytics
+        </Link>
+        <ul role="list" className="stack-small sets">
+          {sets.map(({ slug, name, active, background }) => (
+            <li key={slug} className={active ? "" : "disabled"}>
+              <Link to={`sets/${slug}`}>
+                <div className="image-wrapper">
+                  <img src={background} alt="" />
+                </div>
+                <div className="text--centered">{name}</div>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
     </section>
   );
 };

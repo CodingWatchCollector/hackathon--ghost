@@ -17,7 +17,7 @@ type Common = {
 
 type Props = (LinkProps | ButtonProps) & Common;
 
-const className = "button-style";
+const className = "button-style tappable";
 
 export const Button = ({ type, action, href, children, ...rest }: Props) =>
   type === "link" ? (

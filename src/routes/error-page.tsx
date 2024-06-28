@@ -9,7 +9,15 @@ export const ErrorPage = () => {
       <h1>Oops!</h1>
       <p>Sorry, an unexpected error has occurred.</p>
       <p>
-        <i>{error.statusText || error.message}</i>
+        <i>
+          {error instanceof Error
+            ? "statusText" in error && typeof error.statusText === "string"
+              ? error.statusText
+              : "message" in error
+              ? error.message
+              : "Unknown error!"
+            : "Unknown error !"}
+        </i>
       </p>
     </div>
   );

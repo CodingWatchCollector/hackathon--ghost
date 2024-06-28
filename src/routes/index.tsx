@@ -10,11 +10,14 @@ type SetType = {
   background: string;
 };
 
-type Loader = {
+export type Loader = {
   sets: SetType[];
+  profile: {
+    image: string;
+  };
 };
 
-export const loader = () => {
+export const loader = (): Loader => {
   return {
     sets: [
       {
@@ -35,7 +38,7 @@ export const loader = () => {
         active: false,
         background: "/sets/fruits.jpg",
       },
-    ] satisfies Loader["sets"],
+    ],
     profile: {
       image: "/profile.jpg",
     },

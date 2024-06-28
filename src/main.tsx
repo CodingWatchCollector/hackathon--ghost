@@ -6,8 +6,6 @@ import { ErrorPage } from "./routes/error-page";
 import { Index, loader } from "./routes";
 import "./index.css";
 import Move from "./components/MovePage/Move";
-import { SetPage, loader as setLoader } from "./routes/set";
-
 
 const router = createBrowserRouter([
   {
@@ -20,13 +18,6 @@ const router = createBrowserRouter([
         element: <Index />,
         loader: loader,
       },
-      {
-        path: "sets/:slug",
-        loader: setLoader,
-        element: <SetPage />,
-
-      },
-      
     ],
   },
 

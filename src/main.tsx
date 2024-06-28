@@ -19,13 +19,13 @@ const router = createBrowserRouter([
         loader: loader,
       },
 
-      {
+    ],
+  },
+     {
         path: "/move",
         element: <Move />,
         errorElement: <ErrorPage />,
       },
-    ],
-  },
 ]);
 
 createRoot(document.getElementById("root")!).render(

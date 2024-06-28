@@ -5,6 +5,7 @@ import { createRoot } from "react-dom/client";
 import { ErrorPage } from "./routes/error-page";
 import { Index, loader } from "./routes";
 import "./index.css";
+import Move from "./components/MovePage/Move";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,12 @@ const router = createBrowserRouter([
         loader: loader,
       },
     ],
+  },
+
+  {
+    path: "/move",
+    element: <Move />, 
+    errorElement: <ErrorPage />,
   },
 ]);
 

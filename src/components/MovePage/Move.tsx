@@ -206,6 +206,7 @@ const Move: React.FC = () => {
             background: "white",
             borderRadius: "25px",
             border: "1px solid black",
+            fontSize: "30px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
